@@ -4,15 +4,32 @@ import './App.css';
 import Faculties from './components/Faculties';
 import Academics from './components/Academics';
 import MainPage from './components/MainPage';
+import Calender from './components/Calender';
+import Curriculum from './components/Curriculum';
+import Rdcell from './components/Rdcell';
+import Navbar from './components/Navbar';
+import * as React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+import SignInForm from './components/SignInForm';
+import LoginForm from './components/LoginForm';
 function App() {
   return (
-    <div className="App">
-      <MainPage/>
+    <ChakraProvider>
+      <div className="App">
+      <Navbar/>
       <Routes>
+      <Route path='/' element={<MainPage/>}/>
       <Route path='/Faculties' element={<Faculties/>}/>
       <Route path='/Academics' element={<Academics/>}/>
+      <Route path='calender' element={<Calender/>}/>
+      <Route path='curriculum' element={<Curriculum/>}/>
+      <Route path='rdcell' element={<Rdcell/>}/>
+      <Route path='signupform' element={<SignInForm/>}/>
+      <Route path='loginform' element={<LoginForm/>}/>
       </Routes>
     </div>
+    </ChakraProvider>
+    
   );
 }
 
