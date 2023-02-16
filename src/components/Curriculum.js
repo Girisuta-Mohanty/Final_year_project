@@ -25,22 +25,15 @@ const Curriculum = () => {
        </div>
         </div>
        
-       {/* <div><h1>1st Year</h1>
-       <a href={MyPdf} download="1st year curriculum.pdf"><h1>Curriculum</h1></a>
-       <a href={MyPdf1} download="1styear_syllabus.pdf"><h1>Syllabus</h1></a>
-       </div>
-       <div><h1>2nd Year</h1>
-       <a href={MyPdf2} download="2nd year curriculum.pdf"><h1>Curriculum</h1></a>
-       <a href={MyPdf3} download="2ndyear_syllabus.pdf"><h1>Syllabus</h1></a>
-       </div> */}
-       <TableContainer style={{width:'50%',marginLeft:'25%'}}>
+   
+  <TableContainer style={{width:'50%',marginLeft:'25%' ,marginTop:"30px"}}>
   <Table variant='striped' colorScheme='teal'>
     <TableCaption>Our Electronics Curriculum</TableCaption>
     <Thead>
-      <Tr>
+      <Tr style={{backgroundColor:"yellow"}}>
         <Th>Year</Th>
         <Th>Curriculum</Th>
-        <Th isNumeric>Syllabus</Th>
+        <Th >Syllabus</Th>
       </Tr>
     </Thead>
     <Tbody>

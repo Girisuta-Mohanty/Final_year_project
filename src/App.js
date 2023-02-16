@@ -9,13 +9,13 @@ import Curriculum from './components/Curriculum';
 import Rdcell from './components/Rdcell';
 import Navbar from './components/Navbar';
 import * as React from 'react'
-import { ChakraProvider } from '@chakra-ui/react'
+import { background, ChakraProvider } from '@chakra-ui/react'
 import SignInForm from './components/SignInForm';
 import LoginForm from './components/LoginForm';
 function App() {
   return (
     <ChakraProvider>
-      <div className="App">
+      <div className="App" style={{ marginTop:"60px" }}>
       <Navbar/>
       <Routes>
       <Route path='/' element={<MainPage/>}/>

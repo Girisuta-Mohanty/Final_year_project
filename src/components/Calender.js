@@ -10,7 +10,8 @@ const Calender = () => {
        <div className='text-on-image'>
         <h1>Academic Calender</h1>
        </div>
-       <a href={MyPdf} download="Calender.pdf"><h1>Download Here</h1></a>
+       <a href={MyPdf} download="Calender.pdf"><button style={{backgroundColor:"red" ,padding:"10px",marginTop:"30px" ,fontSize:"2rem" }}>Download Here</button>
+</a>
     </div>
   )
 }

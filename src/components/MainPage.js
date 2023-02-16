@@ -33,15 +33,16 @@ const MainPage = () => {
        
         </div> */}
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(480px, 1fr))'>
-  <Card>
-    <CardBody>
+  <Card style={{height:"90vh"}}>
+    <CardBody style={{height:"80vh"}}>   
     <ImCara/>
+    <div style={{height:"10vh" , fontSize:"4rem"}}>WELCOME TO IIIT BHUBANESWAR</div>
     <YtVideo/>
     </CardBody>
   </Card>
-  <div>
+  <Card style={{height:"90vh"}}>
   <Events/>
-  </div>
+  </Card>
 </SimpleGrid>
     </div>
   )

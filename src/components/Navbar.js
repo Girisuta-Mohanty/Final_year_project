@@ -31,7 +31,7 @@ const Navbar = () => {
   // }
   return (
 
-    <div>
+    <div style={{marginBottom: "10px"}}>
         <nav className='dropdown'>
         <div className="logo">
          <img src="iiit.png" className='iiitim' ></img>
@@ -50,7 +50,7 @@ const Navbar = () => {
       <MenuList className='facbutton'>
         <MenuItem onClick={()=>{navigate('/calender')}} >Academic Calender</MenuItem>
         <MenuItem onClick={()=>{navigate('/curriculum')}}>Curriculum</MenuItem>
-        <MenuItem onClick={()=>{navigate('/rdcell')}}>RD Cell</MenuItem>
+        {/* <MenuItem onClick={()=>{navigate('/rdcell')}}>RD Cell</MenuItem> */}
       </MenuList>
     </>
   )}
