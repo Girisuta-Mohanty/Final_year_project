@@ -1,8 +1,104 @@
 body {
 	background-color: rgb(111, 186, 199);
+	height: 100%;
 
 
 }
+.event-container {
+	font-family: "Roboto", sans-serif;
+	max-width: 800px;
+	height:100px;
+	margin: 0 auto;
+  }
+  
+  .event-container h3.year {
+	font-size: 3rem;
+	text-align: left;
+	border-bottom: 1px solid #b1b1b1;
+  }
+  
+  .event-container .event {
+	box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
+	display: flex;
+	border-radius: 8px;
+	margin: 10px 0;
+	
+  }
+  
+  .event .event-left {
+	background: #222;
+	min-width: 82px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #eee;
+	padding: 1px 48px;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 8px 0 0 8px;
+  }
+  
+  .event .event-left .date {
+	font-size: 20px;
+  }
+  
+  .event .event-left .month {
+	font-size: 10px;
+	font-weight: normal;
+  }
+  
+  .event .event-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 24px;
+  }
+  
+  .event .event-right h3.event-title {
+	font-size: 12px;
+	margin: 5px 0 2px 0;
+	font-weight: 1000;
+	color: #218bbb;
+	text-transform: uppercase;
+  }
+  
+  .event .event-right .event-timing {
+	background: #fff8ba;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 70px;
+	padding:2px;
+	border-radius: 16px;
+	margin: 5px 0;
+	font-size: 8px;
+  }
+  
+  .event .event-right .event-timing img {
+	height: 20px;
+	padding-right: 8px;
+  }
+  
+  @media (max-width: 550px) {
+	.event {
+	  flex-direction: column;
+	}
+  
+	.event .event-left {
+	  padding: 0;
+	  border-radius: 8px 8px 0 0;
+	}
+  
+	.event .event-left .event-date .date,
+	.event .event-left .event-date .month {
+	  display: inline-block;
+	  font-size: 24px;
+	}
+  
+	.event .event-left .event-date {
+	  padding: 10px 0;
+	}
+  }
 .dropdown{
 	position: fixed;
 	  top: 0;
@@ -10,9 +106,46 @@ body {
 	
 	}
 
+.corosalitem{
+	width:400px;
+	height:400px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.corosalitem img {
+		border: 4px solid transparent;
+		width: 100%;
+		height: 100%;
+		border-radius: 4px;
+		box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+		  rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+		transition-duration: 300ms;
+		
+		
+}
+ .corosalitem iframe{
+	width:100%;
+	height:100%;
+   }
+.imgslider{
+	width:100%;
+	height:100vh;
+	background-color: #3f89f8;
+	left:0;
+	right:0;
+	display:flex;
+	justify-content: center;
+	/* align-items: center; */
+}
+button:hover{
+	background-color: #eeecec;
+}
 .tag {
 	text-align: center;
 }
+
 
 .slick-slide img {
 	width: 100%;
@@ -22,6 +155,38 @@ body {
 .head-image{
 	position: relative;
 	text-align: center;
+}
+.signin{
+	width:100px;
+    height:40px;
+	background-color:red;
+	border-radius: 6px;
+	color:#fff;
+	padding: 1px 30px;
+	font-size: 2rem;
+	
+
+	
+}
+.facbutton{
+	/* background-color: #4caf50; */
+	width:25%;
+	padding: 5px;
+ 
+}
+.facbutton1{
+	border-right: #222 solid 1px;
+	width:30%;
+	padding:0 5%;
+	font-size: 2rem;
+	height:70%;
+}
+.facbutton2{
+	
+	width:30%;
+	padding:0 5%;
+	font-size: 1.5rem;
+	height:60%;
 }
 
 .form-container {
@@ -172,3 +337,64 @@ body {
   .card-body {
 	padding: 1.2em;
   }
+
+  .main-card--cointainer {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(300px, 500px));
+	grid-gap: 50px;
+	justify-content: space-between;
+  }
+  .main-newscard--cointainer {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(20vw, 100px));
+	grid-gap: 1px;
+	/* background-color: #555; */
+	justify-content: space-between;
+	padding-right: 20px;
+  }
+  
+  .newscard{
+	/* background-color: #3f89f8; */
+  }
+
+ .newscard img{
+	width:100%;
+  }
+
+
+/* ................................................ */
+.root{
+	
+    height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:end;
+    align-items:center;
+	padding:20px 0;
+	/* background-color:rgb(208, 206, 190);
+	border-top:1px solid rgb(121, 118, 118);
+	border-bottom:1px solid rgb(150, 147, 147); */
+	
+   
+  }
+ .colorText {
+    color: green;
+    font-size: 1.5rem;
+    font-family: "Roboto Condensed"  ; 
+  }
+ .title {
+    color: black;
+    /* font-weight: 900; */
+    /* font-family :'Roboto Condensed'; */
+  }
+ .root .container{
+    width:1000px;
+    display:flex;
+	background-color: #222;
+    align-items: center;
+    justify-content:center;
+    flex-direction:column;
+ }
+  
+  
+  

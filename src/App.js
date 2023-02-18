@@ -12,6 +12,7 @@ import * as React from 'react'
 import { background, ChakraProvider } from '@chakra-ui/react'
 import SignInForm from './components/SignInForm';
 import LoginForm from './components/LoginForm';
+import Base from './components/Base';
 function App() {
   return (
     <ChakraProvider>
