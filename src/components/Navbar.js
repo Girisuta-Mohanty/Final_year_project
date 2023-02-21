@@ -1,11 +1,11 @@
-import React from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import {React,useEffect} from 'react'
+// import {Link, NavLink, useHistory} from 'react-router-dom'
 import DropDown from './DropDown'
 import Faculties from './Faculties'
 import {useState} from 'react'
 import Calender from './Calender'
 import Curriculum from './Curriculum'
-import { Link as Scroll } from 'react-scroll';
+import {Link as Scroll} from 'react-scroll';
 
 import Rdcell from './Rdcell'
 import {useNavigate} from 'react-router-dom'
@@ -21,6 +21,7 @@ import {
     MenuDivider,
     Stack
 } from '@chakra-ui/react'
+import LoginButton from './LoginButton'
 const Navbar = () => {
     // const [state,setState]=useState(false);
     // const navigate=useNavigate();
@@ -30,6 +31,21 @@ const Navbar = () => {
     // const hideDropDown=()=>{
     // setState(false);
     var isOpen = useState(true);
+
+    useEffect(() => {
+        window.gapi.load('auth2', () => {
+
+           
+          window.gapi.auth2.init({
+            client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
+            redirect_uri: 'http://localhost:3000/auth/google/callback',
+          });
+          const token = window.gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
+          console.log(`token >>>>>>> ${token}`)
+         
+        });
+      }, []);
+   
 
     const navigate = useNavigate();
 
@@ -70,7 +86,7 @@ const Navbar = () => {
                                         navigate('/')
                                     }
                             }>
-                                
+
                                 <img src="iiit.png" className='iiitim'></img>
                             </div>
                         </div>
@@ -122,21 +138,20 @@ const Navbar = () => {
                             flexDirection: 'column',
                             justifyContent: 'end ',
                             alignItems: 'flex-end',
-                            paddingTop:"20px",
-                            paddingRight:'20px'
+                            paddingTop: "20px",
+                            paddingRight: '20px'
 
                         }
                     }>
                         <div style={
                             {
-                                  // backgroundColor: 'blue',
+                                // backgroundColor: 'blue',
                                 width: "80%",
                                 height: "90%",
                                 fontSize: '1rem',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'end',
-                                
+                                justifyContent: 'end'
 
 
                             }
@@ -144,31 +159,22 @@ const Navbar = () => {
 
 
                             <div>
-                            <Menu className='signin'>
-                                 {({ isOpen }) => (
-                                                      <>
-                                                      <MenuButton isActive={isOpen} className='signin'>
-                                                      {isOpen ? 'Signin' :'Signin'}
-                                                      </MenuButton>
-                                                      <MenuList>
-                                                      <MenuItem onClick={()=>{navigate('/signupform')}}>Register</MenuItem>
-                                                       <MenuItem onClick={()=>{navigate('/loginform')}}>Sign In</MenuItem>
-        
-                                                      </MenuList>
-                                                       </>
-  )}
-</Menu>
-
+                                <button className='signin'
+                                    onClick={
+                                        () => { window.gapi.auth2.getAuthInstance().signIn();}
+                                }>
+                                    Signin
+                                </button>
+                            {/* <LoginButton/> */}
                             </div>
 
                         </div>
                         <div style={
-                            {
-                                //  backgroundColor: 'yellow',
-                                 width:'80%',
-                                display: 'flex',        
-                                justifyContent:'space-between',
-                                marginTop:'10px'
+                            { // backgroundColor: 'yellow',
+                                width: '80%',
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                marginTop: '10px'
 
                             }
                         }>
@@ -188,33 +194,52 @@ const Navbar = () => {
                             }>
                                 Forum
                             </button>
-                            
-                            <Scroll to="newsevents"  style={{ fontSize:"1.5rem",height:"30%"}} className='facbutton' smooth={true}>
-                            <h1 >
-                                News/Events
-                            </h1>
-                           </Scroll>
-                           
-         
-          
-         
-                           <Scroll to="society"  style={{fontSize:"1.5rem",height:"30%"}} className='facbutton' smooth={true}>
 
-                           <h1 >
-                                Societies
-                            </h1>
-                           </Scroll>
-                           
-                           <Scroll to="footer"  style={{fontSize:"1.5rem",height:"30%"}} className='facbutton' smooth={true}>
+                            <Scroll to="newsevents"
+                                style={
+                                    {
+                                        fontSize: "1.5rem",
+                                        height: "30%"
+                                    }
+                                }
+                                className='facbutton'
+                                smooth={true}>
+                                <h1>
+                                    News/Events
+                                </h1>
+                            </Scroll>
 
-                           <h1 >
-                                Footer
-                            </h1>
-                           </Scroll>
-                           
-                          
 
-                         
+                            <Scroll to="society"
+                                style={
+                                    {
+                                        fontSize: "1.5rem",
+                                        height: "30%"
+                                    }
+                                }
+                                className='facbutton'
+                                smooth={true}>
+
+                                <h1>
+                                    Societies
+                                </h1>
+                            </Scroll>
+
+                            <Scroll to="footer"
+                                style={
+                                    {
+                                        fontSize: "1.5rem",
+                                        height: "30%"
+                                    }
+                                }
+                                className='facbutton'
+                                smooth={true}>
+
+                                <h1>
+                                    Footer
+                                </h1>
+                            </Scroll>
+
 
                         </div>
                     </div>
