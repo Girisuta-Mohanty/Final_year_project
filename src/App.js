@@ -17,7 +17,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App" style={{ marginTop:"60px" }}>
-      <Navbar/>
+      {/* <Navbar/> */}
       <Routes>
       <Route path='/' element={<MainPage/>}/>
       <Route path='/Faculties' element={<Faculties/>}/>

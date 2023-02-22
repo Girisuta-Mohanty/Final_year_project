@@ -21,7 +21,9 @@ import {
     MenuDivider,
     Stack
 } from '@chakra-ui/react'
-import LoginButton from './LoginButton'
+import GoogleSignInButton from './LoginButton'
+import { isAuthenticated } from '../auth/helper'
+// import LoginButton from './LoginButton'
 const Navbar = () => {
     // const [state,setState]=useState(false);
     // const navigate=useNavigate();
@@ -31,20 +33,83 @@ const Navbar = () => {
     // const hideDropDown=()=>{
     // setState(false);
     var isOpen = useState(true);
+    // useEffect(() => {
+    //     const script = document.createElement('script');
+    //     script.src = 'https://apis.google.com/js/api:client.js';
+    //     script.onload = init;
+    //     document.body.appendChild(script);
+    //   }, []);
+    
+    //   const init = () => {
+    //     window.gapi.load('auth2', () => {
+    //       window.gapi.auth2.init({
+    //         client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
+    //         scope: 'email profile',
+    //         redirect_uri: 'http://localhost:3000/Faulties'
+        
+    //         // Other configuration options
+    //       });
+    //     });
+    //   };
 
-    useEffect(() => {
-        window.gapi.load('auth2', () => {
+    // const signInWithGoogle = () => {
+    //     window.gapi.auth2.getAuthInstance().signIn().then(() => {
+    //       const user = window.gapi.auth2.getAuthInstance().currentUser.get();
+    //       const token = user.getAuthResponse().id_token;
+    //       console.log("fcgsdvHCbkjnk;mcfdf ")
+    
+    //       fetch('http://localhost:3001/auth/google', {
+    //         method: 'GET',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ token })
+    //       })
+    //       .then(response => {
+    //         // Handle the response from the server
+    //       })
+    //       .catch(error => {
+    //         console.log(error.message);
+    //       });
+    //     }, error => {
+    //       console.log(error.error);
+    //     });
+    //   };
 
-           
-          window.gapi.auth2.init({
-            client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
-            redirect_uri: 'http://localhost:3000/auth/google/callback',
-          });
-          const token = window.gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
-          console.log(`token >>>>>>> ${token}`)
-         
-        });
-      }, []);
+    //   useEffect(() => {
+    //     window.gapi.load('auth2', () => {
+    //       window.gapi.auth2.init({
+    //         // your Google OAuth configuration
+    //         client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
+    //         // redirect_uri: 'http://localhost:3000',
+
+    //       }).then(() => {
+    //         // Get the user's Google ID token
+    //         console.log(`token>>>>`)
+
+    //         const user = window.gapi.auth2.getAuthInstance().currentUser.get();
+    //         const token = user.getAuthResponse().id_token;
+    //         console.log(`token>>>> ${token}`)
+            
+    //         // Make an API request to your server
+    //         fetch('http://localhost:3001/auth/google', {
+    //           method: 'POST',
+    //           headers: {
+    //             'Content-Type': 'application/json'
+    //           },
+    //           body: JSON.stringify({ token })
+    //         })
+    //         .then(response => {
+    //           // Handle the response from your server
+    //           console.log(response)
+    //         })
+    //         .catch(error => {
+    //           // Handle any errors that occur
+    //         });
+    //       });
+    //     });
+    //   }, []);
+      
    
 
     const navigate = useNavigate();
@@ -116,14 +181,17 @@ const Navbar = () => {
                             }>
                                 Alumni
                             </button>
-                            <button className='facbutton1'
-                                onClick={
-                                    () => {
-                                        navigate('/Faculties')
-                                    }
-                            }>
-                                Students
-                            </button>
+                            {
+                                 isAuthenticated() && <button className='facbutton1'
+                                 onClick={
+                                     () => {
+                                         navigate('/Faculties')
+                                     }
+                             }>
+                                 Students
+                             </button>
+                            }
+                           
                         </div>
 
                     </div>
@@ -159,12 +227,14 @@ const Navbar = () => {
 
 
                             <div>
-                                <button className='signin'
+                                <GoogleSignInButton/>
+                                {/* <LoginButton/> */}
+                                {/* <button className='signin'
                                     onClick={
-                                        () => { window.gapi.auth2.getAuthInstance().signIn();}
+                                        () => { LoginButton()}
                                 }>
                                     Signin
-                                </button>
+                                </button> */}
                             {/* <LoginButton/> */}
                             </div>
 
