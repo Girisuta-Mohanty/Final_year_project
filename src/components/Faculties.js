@@ -1,8 +1,10 @@
 import React from 'react'
+import Base from './Base';
 import {Faculty} from './FacultyApi';
 const Faculties = () => {
   return (
-    <div style={{textAlign:"center" }}>
+    <Base>
+      <div style={{textAlign:"center" }}>
        <section className='main-card--cointainer'>
       {
         Faculty.map((curElem)=>{
@@ -18,7 +20,8 @@ const Faculties = () => {
       }
       </section>
       
-    </div>
+    </div></Base>
+  
   )
 }
 

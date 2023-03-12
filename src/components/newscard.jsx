@@ -1,19 +1,20 @@
 import React from 'react'
 import { Faculty } from './FacultyApi';
+import { productData } from './NApi';
 
 function NewsCard() {
     return(
     <div>
     <section className='main-newscard--cointainer' >
    {
-     Faculty.map((curElem)=>{
-         const {id,name,image,description}=curElem;
+     productData.slice(0, 3).map((curElem)=>{
+         const {id,name,imageurl}=curElem;
          return (
            <Card
-           img='https://picsum.photos/id/54/400/300'
-           title='What I learned from my visit to The Upside Down'
-           email='sbdf@gmail.com'
-           number='1234567891' />
+           id={id}
+           img={imageurl}
+           title={name}
+          />
          );
      })
    }

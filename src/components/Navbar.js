@@ -1,4 +1,4 @@
-import {React,useEffect} from 'react'
+import {React, useEffect} from 'react'
 // import {Link, NavLink, useHistory} from 'react-router-dom'
 import DropDown from './DropDown'
 import Faculties from './Faculties'
@@ -6,7 +6,7 @@ import {useState} from 'react'
 import Calender from './Calender'
 import Curriculum from './Curriculum'
 import {Link as Scroll} from 'react-scroll';
-
+import {Navigate} from "react-router-dom"
 import Rdcell from './Rdcell'
 import {useNavigate} from 'react-router-dom'
 // import { ChevronDown } from '@dcp-ui/icons.chevron-down'
@@ -22,7 +22,7 @@ import {
     Stack
 } from '@chakra-ui/react'
 import GoogleSignInButton from './LoginButton'
-import { isAuthenticated } from '../auth/helper'
+import {isAuthenticated} from '../auth/helper'
 // import LoginButton from './LoginButton'
 const Navbar = () => {
     // const [state,setState]=useState(false);
@@ -32,32 +32,36 @@ const Navbar = () => {
     // }
     // const hideDropDown=()=>{
     // setState(false);
+    var {
+        user,
+        token
+    } = isAuthenticated();
     var isOpen = useState(true);
     // useEffect(() => {
     //     const script = document.createElement('script');
     //     script.src = 'https://apis.google.com/js/api:client.js';
     //     script.onload = init;
     //     document.body.appendChild(script);
-    //   }, []);
-    
-    //   const init = () => {
+    // }, []);
+
+    // const init = () => {
     //     window.gapi.load('auth2', () => {
     //       window.gapi.auth2.init({
     //         client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
     //         scope: 'email profile',
-    //         redirect_uri: 'http://localhost:3000/Faulties'
-        
+    //         Navigate_uri: 'http://localhost:3000/Faulties'
+
     //         // Other configuration options
     //       });
     //     });
-    //   };
+    // };
 
     // const signInWithGoogle = () => {
     //     window.gapi.auth2.getAuthInstance().signIn().then(() => {
     //       const user = window.gapi.auth2.getAuthInstance().currentUser.get();
     //       const token = user.getAuthResponse().id_token;
     //       console.log("fcgsdvHCbkjnk;mcfdf ")
-    
+
     //       fetch('http://localhost:3001/auth/google', {
     //         method: 'GET',
     //         headers: {
@@ -74,14 +78,14 @@ const Navbar = () => {
     //     }, error => {
     //       console.log(error.error);
     //     });
-    //   };
+    // };
 
-    //   useEffect(() => {
+    // useEffect(() => {
     //     window.gapi.load('auth2', () => {
     //       window.gapi.auth2.init({
     //         // your Google OAuth configuration
     //         client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
-    //         // redirect_uri: 'http://localhost:3000',
+    //         // Navigate_uri: 'http://localhost:3000',
 
     //       }).then(() => {
     //         // Get the user's Google ID token
@@ -90,7 +94,7 @@ const Navbar = () => {
     //         const user = window.gapi.auth2.getAuthInstance().currentUser.get();
     //         const token = user.getAuthResponse().id_token;
     //         console.log(`token>>>> ${token}`)
-            
+
     //         // Make an API request to your server
     //         fetch('http://localhost:3001/auth/google', {
     //           method: 'POST',
@@ -108,9 +112,8 @@ const Navbar = () => {
     //         });
     //       });
     //     });
-    //   }, []);
-      
-   
+    // }, []);
+
 
     const navigate = useNavigate();
 
@@ -182,17 +185,15 @@ const Navbar = () => {
                                 Alumni
                             </button>
                             {
-                                 isAuthenticated() && <button className='facbutton1'
-                                 onClick={
-                                     () => {
-                                         navigate('/Faculties')
-                                     }
-                             }>
-                                 Students
-                             </button>
-                            }
-                           
-                        </div>
+                            isAuthenticated() && <button className='facbutton1'
+                                onClick={
+                                    () => {
+                                        navigate('/Student')
+                                    }
+                            }>
+                                Students
+                            </button>
+                        } </div>
 
                     </div>
 
@@ -226,100 +227,126 @@ const Navbar = () => {
                         }>
 
 
-                            <div>
-                                <GoogleSignInButton/>
-                                {/* <LoginButton/> */}
-                                {/* <button className='signin'
+                            <div style={
+                                {
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }
+                            }>
+                                {
+                                isAuthenticated() && user.role === 1 && <button className='centered-placeholder'
+                                    onClick={
+                                        () => {
+                                            navigate('/update')
+                                        }
+                                }>
+                                    Update Profile
+                                </button>
+                            }
+                                <button onClick={
+                                    () => {
+                                        
+                                            // if (user && user.role === 1) {
+                                            //     return <Navigate to='/'/>;
+                                            // } else {
+                                            //     return <Navigate to='/'/>;
+                                            // }
+                                  
+                                    }
+                                }>
+                            <GoogleSignInButton/> </button>
+                            {/* <LoginButton/> */}
+                            {/* <button className='signin'
                                     onClick={
                                         () => { LoginButton()}
                                 }>
                                     Signin
                                 </button> */}
-                            {/* <LoginButton/> */}
-                            </div>
+                            {/* <LoginButton/> */} </div>
 
-                        </div>
-                        <div style={
-                            { // backgroundColor: 'yellow',
-                                width: '80%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                marginTop: '10px'
-
-                            }
-                        }>
-                            <button className='facbutton'
-                                onClick={
-                                    () => {
-                                        navigate('/Faculties')
-                                    }
-                            }>
-                                Resources
-                            </button>
-                            <button className='facbutton'
-                                onClick={
-                                    () => {
-                                        navigate('/Faculties')
-                                    }
-                            }>
-                                Forum
-                            </button>
-
-                            <Scroll to="newsevents"
-                                style={
-                                    {
-                                        fontSize: "1.5rem",
-                                        height: "30%"
-                                    }
-                                }
-                                className='facbutton'
-                                smooth={true}>
-                                <h1>
-                                    News/Events
-                                </h1>
-                            </Scroll>
-
-
-                            <Scroll to="society"
-                                style={
-                                    {
-                                        fontSize: "1.5rem",
-                                        height: "30%"
-                                    }
-                                }
-                                className='facbutton'
-                                smooth={true}>
-
-                                <h1>
-                                    Societies
-                                </h1>
-                            </Scroll>
-
-                            <Scroll to="footer"
-                                style={
-                                    {
-                                        fontSize: "1.5rem",
-                                        height: "30%"
-                                    }
-                                }
-                                className='facbutton'
-                                smooth={true}>
-
-                                <h1>
-                                    Footer
-                                </h1>
-                            </Scroll>
-
-
-                        </div>
                     </div>
+                    <div style={
+                        { // backgroundColor: 'yellow',
+                            width: '80%',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            marginTop: '10px'
 
-                </Stack>
+                        }
+                    }>
+                        <button className='facbutton'
+                            onClick={
+                                () => {
+                                    navigate('/resources')
+                                }
+                        }>
+                            Resources
+                        </button>
+                        <button className='facbutton'
+                            onClick={
+                                () => {
+                                    navigate('/Faculties')
+                                }
+                        }>
+                            Forum
+                        </button>
+
+                        <Scroll to="newsevents"
+                            style={
+                                {
+                                    fontSize: "1.5rem",
+                                    height: "30%"
+                                }
+                            }
+                            className='facbutton'
+                            smooth={true}>
+                            <h1>
+                                News/Events
+                            </h1>
+                        </Scroll>
 
 
-            </nav>
+                        <Scroll to="society"
+                            style={
+                                {
+                                    fontSize: "1.5rem",
+                                    height: "30%"
+                                }
+                            }
+                            className='facbutton'
+                            smooth={true}>
 
-        </div>
+                            <h1>
+                                Societies
+                            </h1>
+                        </Scroll>
+
+                        <Scroll to="footer"
+                            style={
+                                {
+                                    fontSize: "1.5rem",
+                                    height: "30%"
+                                }
+                            }
+                            className='facbutton'
+                            smooth={true}>
+
+                            <h1>
+                                Footer
+                            </h1>
+                        </Scroll>
+
+
+                    </div>
+                </div>
+
+            </Stack>
+
+
+        </nav>
+
+    </div>
     )
 }
 

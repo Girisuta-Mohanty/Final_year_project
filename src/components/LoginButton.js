@@ -1,20 +1,9 @@
 import {GoogleLogin, GoogleOAuthProvider} from '@react-oauth/google';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 import {authenticate} from '../auth/helper';
 
 
-const responseGoogle = async (credentialResponse) => {
-    console.log(credentialResponse);
-    // const responsePayload = decodeJwtResponse(credentialResponse.credential);
-    // try {
-    // const res = await axios.post('http://localhost:3001/google/auth', {
-    //     tokenId: response.tokenId,
-    // });
-    // console.log(res.data);
-    // } catch (error) {
-    // console.log(error);
-    // }
-};
 function decodeJwtResponse(token) {
     var base64Url = token.split(".")[1];
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -40,18 +29,15 @@ const GoogleSignInButton = () => {
                         const responsePayload = decodeJwtResponse(credentialResponse.credential);
                          const email = responsePayload.email;
                         // console.log(responsePayload.token)
-                        if (email.endsWith("@iiit-bh.ac.in")) {
+                        // if (email.endsWith("@iiit-bh.ac.in")) {
                             try {
                                 const response = await axios.post('http://localhost:3001/auth/google', {token: credentialResponse.credential});
     
-                                console.log(`dataaa${
-                                    response.data.token
-                                }`)
-    
-                                authenticate(( response.data.token),()=>{
+                                authenticate(( response.data),()=>{
+                                    // console.log(`sd ${response.data.user.email}`)
                                     console.log("yes i have set the key value pair")
+                                    window.location.reload();
                                 })
-    
     
                             } catch (error) {
                                 console.log(error);
@@ -59,11 +45,15 @@ const GoogleSignInButton = () => {
                             }
                             alert('Login successFul');
                             // navigate('/afterlogin');
-                        } else {
-                            alert('Please login using Institute Email-id');
-                        }
+                        // } else {
+                        //     alert('Please login using Institute Email-id');
+
+                        // }
+
+                     
                        
                     }
+                    
                 }
                 onError={
                     () => {

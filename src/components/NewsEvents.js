@@ -2,6 +2,7 @@ import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import Events from './Events'
 import NewsCard from './newscard'
+import { productData, responsive } from "./NApi";
 
 function NewsEvents() {
   return (
@@ -9,12 +10,12 @@ function NewsEvents() {
                 <Stack spacing={1}
                     direction='row'
                     style={{padding:"40px 10px",
-                        width: '100%',
-                     
+                        width: '100%',                   
                     }}
                  
                 >
-                    <div style={
+                
+                <div style={
                         {
                             width: "70%",
                             height: "300px",

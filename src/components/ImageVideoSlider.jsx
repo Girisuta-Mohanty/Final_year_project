@@ -14,7 +14,7 @@ const ImageSlider = () => {
     autoplay: true,
   };
   return (
-    <div  id ="Home" style={{marginBottom:"0",width:"100vw",height:"80vh",overflowX:"hidden",overflowY:"hidden",display:"flex",justifyContent:"center"}}>
+    <div  id ="Home" style={{marginTop:"-28px",width:"100vw",height:"80vh",overflowX:"hidden",overflowY:"hidden",display:"flex",justifyContent:"center"}}>
     <Carousel {...settings}>
       {" "}
       <Wrap>
