@@ -1,6 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
-import Footer from './Footer';
+import Footers from './Footers';
 import Navbar from './Navbar';
 const Base = ({ children }) => {
   return (
@@ -9,7 +9,7 @@ const Base = ({ children }) => {
       <Box p={8} minH={'100vh'} style={{display:'inline-block',justifyContent:"center"}} padding={'15vh 0px'} overflowX={'hidden'}>
         {children}
       </Box>
-      <Footer></Footer>
+      <Footers></Footers>
     </Box>
   );
 };

@@ -25,6 +25,7 @@ import GoogleSignInButton from './LoginButton'
 import {isAuthenticated} from '../auth/helper'
 // import LoginButton from './LoginButton'
 const Navbar = () => {
+   
     // const [state,setState]=useState(false);
     // const navigate=useNavigate();
     // const showDropDown=()=>{
@@ -36,6 +37,7 @@ const Navbar = () => {
         user,
         token
     } = isAuthenticated();
+    console.log(user);
     var isOpen = useState(true);
     // useEffect(() => {
     //     const script = document.createElement('script');
@@ -179,7 +181,7 @@ const Navbar = () => {
                             <button className='facbutton1'
                                 onClick={
                                     () => {
-                                        navigate('/Faculties')
+                                        navigate('/alumii')
                                     }
                             }>
                                 Alumni
@@ -286,7 +288,7 @@ const Navbar = () => {
                         <button className='facbutton'
                             onClick={
                                 () => {
-                                    navigate('/Faculties')
+                                    navigate('/Forum')
                                 }
                         }>
                             Forum

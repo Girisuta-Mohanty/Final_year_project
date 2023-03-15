@@ -12,13 +12,16 @@ import * as React from 'react'
 import { background, ChakraProvider } from '@chakra-ui/react'
 import SignInForm from './components/SignInForm';
 import LoginForm from './components/LoginForm';
-import Base from './components/Base';
+// import Base from './components/Base';
 import Student from './components/Student';
 import UpdateProfile from './components/UpdateProfile';
 import ClassRoom from './components/classRoom';
 import Resources from './components/Resources';
 import Files from './components/Files';
+import Footers from './components/Footers';
 import UploadFile from './components/Upload';
+import Alumii from './components/Alumii';
+import Forum from './components/Forum';
 function App() {
   return (
     <ChakraProvider>
@@ -39,6 +42,9 @@ function App() {
       <Route path='signupform' element={<SignInForm/>}/>
       <Route path='loginform' element={<LoginForm/>}/>
       <Route path='classroom' element={<ClassRoom/>}/>
+      <Route path='footer' element={<Footers/>}/>
+      <Route path='alumii' element={<Alumii/>}/>
+      <Route path='Forum' element={<Forum/>}/>
       </Routes>
     </div>
     </ChakraProvider>

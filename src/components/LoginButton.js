@@ -29,7 +29,7 @@ const GoogleSignInButton = () => {
                         const responsePayload = decodeJwtResponse(credentialResponse.credential);
                          const email = responsePayload.email;
                         // console.log(responsePayload.token)
-                        // if (email.endsWith("@iiit-bh.ac.in")) {
+                        if (email.endsWith("@iiit-bh.ac.in")) {
                             try {
                                 const response = await axios.post('http://localhost:3001/auth/google', {token: credentialResponse.credential});
     
@@ -45,10 +45,10 @@ const GoogleSignInButton = () => {
                             }
                             alert('Login successFul');
                             // navigate('/afterlogin');
-                        // } else {
-                        //     alert('Please login using Institute Email-id');
+                         } else {
+                             alert('Please login using Institute Email-id');
 
-                        // }
+                         }
 
                      
                        

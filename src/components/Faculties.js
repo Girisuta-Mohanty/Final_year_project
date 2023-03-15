@@ -1,27 +1,29 @@
 import React from 'react'
-import Base from './Base';
 import {Faculty} from './FacultyApi';
+import Base from './Base';
 const Faculties = () => {
   return (
     <Base>
-      <div style={{textAlign:"center" }}>
+    <div style={{textAlign:"center" }}>
        <section className='main-card--cointainer'>
       {
         Faculty.map((curElem)=>{
-            const {id,name,image,description}=curElem;
+            const {id,image,name,profession,email,description,url}=curElem;
             return (
               <Card
-              img='https://picsum.photos/id/54/400/300'
-              title='What I learned from my visit to The Upside Down'
-              email='sbdf@gmail.com'
-              number='1234567891' />
+              img={image}
+              title={name}
+              email={email}
+              description={description}
+              url={url} />
             );
         })
       }
       </section>
       
-    </div></Base>
-  
+    </div>
+    </Base>
+    
   )
 }
 
@@ -34,13 +36,14 @@ class Card extends React.Component {
   render() {
     return(
         <div className="card">
-          <img src={this.props.img} />
+          
           <div className="card-body">
+          <img src={this.props.img} onClick={()=> window.location.href = this.props.url} />
             <h2>{this.props.title}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <p>{this.props.description}</p>
             <div><p>Email:</p> <h5>{this.props.email}</h5></div>
             <div> <p>Phone-No:</p> <h5>{this.props.number}</h5></div>
-           
+           {/* <a href={this.props.url}>{this.props.url}</a> */}
           </div>
         </div>
     )
