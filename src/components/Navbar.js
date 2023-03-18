@@ -22,7 +22,7 @@ import {
     Stack
 } from '@chakra-ui/react'
 import GoogleSignInButton from './LoginButton'
-import {isAuthenticated} from '../auth/helper'
+import {isAuthenticated, signout} from '../auth/helper'
 // import LoginButton from './LoginButton'
 const Navbar = () => {
    
@@ -163,7 +163,6 @@ const Navbar = () => {
                         <div style={
                             {
                                 width: "50%",
-
                                 height: "100%",
                                 display: 'flex',
                                 justifyContent: 'center',
@@ -231,9 +230,16 @@ const Navbar = () => {
 
                             <div style={
                                 {
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
+                                    // display: 'flex',
+                                    // justifyContent: 'center',
+                                    // alignItems: 'center'
+                                    width: "80%",
+                                height: "90%",
+                                fontSize: '1rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                // position:'fixed'
                                 }
                             }>
                                 {
@@ -246,26 +252,10 @@ const Navbar = () => {
                                     Update Profile
                                 </button>
                             }
-                                <button onClick={
-                                    () => {
-                                        
-                                            // if (user && user.role === 1) {
-                                            //     return <Navigate to='/'/>;
-                                            // } else {
-                                            //     return <Navigate to='/'/>;
-                                            // }
-                                  
-                                    }
-                                }>
-                            <GoogleSignInButton/> </button>
-                            {/* <LoginButton/> */}
-                            {/* <button className='signin'
-                                    onClick={
-                                        () => { LoginButton()}
-                                }>
-                                    Signin
-                                </button> */}
-                            {/* <LoginButton/> */} </div>
+                                
+                            {!isAuthenticated()?<GoogleSignInButton/>:<button style={{backgroundColor:"red",borderR
+                            :"10px",padding:"10px",color:"white"}} onClick={signout}>LogOut</button>} 
+                             </div>
 
                     </div>
                     <div style={

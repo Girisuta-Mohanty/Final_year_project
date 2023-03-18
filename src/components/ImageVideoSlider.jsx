@@ -15,7 +15,7 @@ const ImageSlider = () => {
   };
   return (
     <div  id ="Home" style={{marginTop:"-28px",width:"100vw",height:"80vh",overflowX:"hidden",overflowY:"hidden",display:"flex",justifyContent:"center"}}>
-    <Carousel {...settings}>
+    <Carousel {...settings} style={{position:"relative"}}>
       {" "}
       <Wrap>
         <img src='iiit1.png' alt='' />
@@ -41,7 +41,7 @@ export default ImageSlider;
 const Carousel = styled(Slider)`
  
   height:60vh;
-  width:100vw;
+  width:100%;
   .slick-list {
     overflow: visible;
   }
@@ -61,7 +61,7 @@ const Carousel = styled(Slider)`
 const Wrap = styled.div`
   cursor: pointer;
   height:78vh;
-  width:90vw;
+  width:100%;
 
   img {
     border: 1px solid transparent;

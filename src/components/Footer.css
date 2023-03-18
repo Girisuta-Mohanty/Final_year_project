@@ -43,7 +43,10 @@
     color: #fff;
     text-decoration: none;
   }
-  
+  li{
+    display:list-item;
+    list-style-position:inside;
+  }
   .oxford-footer-bottom {
     margin-top: 10px;
     text-align: center;

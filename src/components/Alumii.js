@@ -1,19 +1,21 @@
 import axios from 'axios';
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Alumni} from './AlumniApi';
 import Base from './Base';
 import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-  FormHelperText,Input,Button
+  FormHelperText,Input,Button,ButtonGroup,IconButton
 } from '@chakra-ui/react'
+import { AddIcon } from '@chakra-ui/icons'
+// import { Button, ButtonGroup } from '@chakra-ui/react'
 const Alumii = () => {
   const [name, setName] = useState('');
   const [batch, setBatch] = useState('');
   const [profession, setProfession] = useState('');
   const [image, setImage] = useState(null);
-  const [cv, setCv] = useState(null);
+  // const [cv, setCv] = useState(null);
   // const [files,setFiles]=useState([]);
    const [email, setEmail] = useState('');
   const handleSubmit =async (event) => {
@@ -27,27 +29,8 @@ const Alumii = () => {
   formData.append('name', name);
   formData.append('email', email);
   formData.append('profession', profession);
-  formData.append('image', image);
-  formData.append('cv',cv);
-  // console.log(image);
-  // const user={
-  //   cv:formData.get("image"),
-  //   image:formData.get("cv")
-  // };
-  // setFiles([...files, user]);
-  // setFiles([...files,image,cv]);
-  // setFiles([...files,cv]);
-  // console.log(files);
-  // files.forEach(file=>(formData.append("files",file)));
-  // formData.append('files', [image,cv]);
-  // formData.append('files', cv);
- 
-  // console.log(formData.get("name"));
-  // console.log(formData.get("batch"));
-  // console.log(formData.get("profession"));
-  // console.log(formData.get("files"));
-  // console.log(formData.get("cv"));
-  //  console.log(formData.get("email"));
+  formData.append('avatar', image);
+  // formData.append('cv',cv);
    for (const [key, value] of formData.entries()) {
     console.log(`${key}: ${value}`);
   }
@@ -59,50 +42,52 @@ const Alumii = () => {
     }
   }
    try {
-    const response = await fetch("http://localhost:3001/alumni/createAlumni",formData,
+    const response = await axios.post("http://localhost:3001/alumni/createAlumni",formData,
      {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Accept: 'application/json',
+        // Accept: 'application/json',
     },
-    body: JSON.stringify(Object.fromEntries(formData)),
+    body: response.json.Stringify(formData),
      } );
-  //{
-  //      method: "POST",
-  //     // headers: {
-  //     //         'Content-Type': 'multipart/form-data',
-  //     //         Accept: 'application/json',
-  //     //     },
-  //     // body: formData,
-  //     method: 'POST',
-  // headers: {
-  //   'Content-Type': 'application/json'
-  // },
-  // body: JSON.stringify(Object.fromEntries(formData)),
-    // }
-    const data = await response.json();
-   console.log(data);
   } catch (error) {
     console.error(error);
   }
-// try {
-//   const response = await fetch("http://localhost:3001/alumni/createAlumni", {
-//     method: "POST",
-//     headers: {
-//       'Content-Type': 'multipart/form-data',
-//       Accept: 'application/json',
-//   },
-//     body: formData,
-//   });
-//   const data = await response.json();
-//   console.log(data);
-// } catch (error) {
-//   console.error(error);
-// }
   };
+  const [showForm, setShowForm] = useState(false);
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  }
+  const [data,setData]=useState([]);
+  // const [batchs,setBatchs]=useState(null);
+  // const [names,setNames]=useState(null);
+  // const [professions,setProfessions]=useState(null);
+  // const [images,setImages]=useState([]);
+  useEffect(()=>{
+    fetchData();
+  }, [])
+  const [imageData, setImageData] = useState(null);
+
+  const fetchData=
+    async() => {
+      try {
+        const response = await axios.get('http://localhost:3001/alumni/alumnis'); // replace with your API endpoint
+        setData(response.data);
+        console.log(response.data);
+  
+      } catch (error) {
+        console.log(error);
+      }
+  }
   return (
     <Base>
-     <form onSubmit={handleSubmit} className='form-container'>
+    <ButtonGroup size='sm' isAttached variant='outline'>
+  <Button colorScheme='pink' variant='solid' size='lg' style={{}} >Add an Alumni</Button>
+  <IconButton aria-label='Add to friends' icon={<AddIcon />} onClick={toggleForm} size='lg'/>
+</ButtonGroup>
+     {/* <button onClick={toggleForm}>+ Add an Alumni</button> */}
+     {showForm &&(<form onSubmit={handleSubmit} className='form-container'>
      <FormControl>
   <FormLabel>Email address</FormLabel>
   <Input type='email' value={email} onChange={(event) => setEmail(event.target.value)} />
@@ -125,11 +110,6 @@ const Alumii = () => {
       </FormLabel>
       <Input type="file" id="image" onChange={(event) => setImage(event.target.files[0])} />
 </FormControl>
-<FormControl>
-  <FormLabel>CV
-      </FormLabel>
-      <Input type="file" id="cv" onChange={(event) => setCv(event.target.files[0])} />
-</FormControl>
 <Button
             mt={4}
             colorScheme='teal'
@@ -139,25 +119,34 @@ const Alumii = () => {
             Submit
           </Button>
       {/* <button type="submit" className='form-button '>Submit</button> */}
-    </form>
+    </form>)}
+   
     <div>
        <section className='main-card--cointainer' >
       {
-        Alumni.map((curElem)=>{
-            const {id,name,image,profession}=curElem;
+        data.map((curElem)=>{
+            const {batch,name,email,profession,image}=curElem;
+            
             return (
                 <>
-                <div className='card-container' key={id}>
+                <div className='card-container' key={email}>
             <div className='card' style={{height:"90%"}}>
             <div className='card-body'>
-                <span className='card-Number card-circle subtle'>{id}</span>
+                {/* <span className='card-Number card-circle subtle'>{id}</span> */}
                 
                 <h2 className='card-title'>{name}</h2>
+                <h2 className='card-title'>{email}</h2>
+                <h2 className='card-title'>{batch}</h2>
                 <span className='card-description subtle'>
                {profession}
                 </span>
             </div>
-            <img src={image} alt="image" className='card-media'/>
+            {/* {imageData && ( */}
+        {/* <img src={`data:image/png;base64,${image}`} alt="Profile Image" /> */}
+        {imageData && <img src={imageData} alt="Image" />}
+      {/* )} */}
+            {/* <img src={`data:image/jpeg;base64,${image}`} className='card-media'/> */}
+            <div className="file-size">{imageData}</div>
         </div>
       </div>
                 </>

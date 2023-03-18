@@ -7,17 +7,18 @@
     }
   };
   
-  // export const signout = (next) => {
-  //   if (typeof window !== 'undefined') {
-  //     localStorage.removeItem('jwt');
-  //     next();
-  //     return fetch(`${API}/signout`, {
-  //       method: 'GET',
-  //     })
-  //       .then((response) => console.log('signout success'))
-  //       .catch((err) => console.log(err));
-  //   }
-  // };
+  export const signout = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('jwt');
+      // next();
+      window.location.reload();
+      return fetch(`http://localhost:3001/user/signout`, {
+        method: 'GET',
+      })
+        .then((response) => console.log('signout success'))
+        .catch((err) => console.log(err));
+    }
+  };
   
   export const isAuthenticated = () => {
     if (typeof window == 'undefined') {
