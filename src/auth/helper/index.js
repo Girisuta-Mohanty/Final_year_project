@@ -19,6 +19,10 @@
         .catch((err) => console.log(err));
     }
   };
+
+
+
+  
   
   export const isAuthenticated = () => {
     if (typeof window == 'undefined') {
