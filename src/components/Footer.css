@@ -1,15 +1,10 @@
 .oxford-footer {
     background-color: #0c2340;
-     color: #fff;
-    /* padding: 20px;  */
-    /* margin-bottom: 1px; */
-    /* margin-top: 20px;
-    height:auto; */
+    color: #fff;
     position: absolute;
-    bottom: 0;
     width: 100%;
     height: 200px;
-    padding: 20px;
+    padding: 20px; 
   }
   
   .oxford-footer-content {

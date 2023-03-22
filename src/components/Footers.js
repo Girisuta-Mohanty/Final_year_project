@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css'; // import your custom stylesheet
-import Base from './Base';
+
 function Footers(){
   return (
     <footer className="oxford-footer">

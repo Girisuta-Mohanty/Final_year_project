@@ -15,8 +15,7 @@ function SocietyCard({ place,checked }) {
 
         <Card style={
             {
-                maxWidth: "250px",
-                minWidth: "245px",
+                width: "30vw",
                 backgroundColor: '(1,1,1,0.5)rgba',
                 margin: '20px',
                 height: "250px"

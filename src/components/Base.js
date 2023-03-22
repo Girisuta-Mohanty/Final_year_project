@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import Footers from './Footers';
 import Navbar from './Navbar';
+
 const Base = ({ children }) => {
   return (
     <Box>

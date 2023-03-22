@@ -28,6 +28,7 @@ const MainPage = () => {
         <Base>
             <div className='mainpage'>
                 <ImageSlider/>
+                
 
 
                 <NewsEvents/>

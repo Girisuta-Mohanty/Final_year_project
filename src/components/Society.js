@@ -17,10 +17,10 @@ function Society() {
 
   //  const checked = useWindowPosition('header');
   return <div className="root" id='society'>
-    <div className="conatiner">
+    <div  style={{fontSize:"3rem",width:"97vw",textAlign:"center",backgroundColor:"#FCEDDA"}}>
     
-      <h3 className="title" style={{fontSize:"3rem"}}>Societies</h3>
-      <Carousel style={{width:"1000px"}} breakPoints={breakPoints} >
+      <h3 className="title" style={{fontSize:"3rem",marginTop:"15px"}}>Societies</h3>
+      <Carousel style={{width:"97vw",margin:"auto"}} breakPoints={breakPoints} >
         {Array.map(item => <SocietyCard  place={item}/>)} 
       </Carousel>  
       </div>  

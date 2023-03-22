@@ -1,15 +1,13 @@
 import {React, useEffect} from 'react'
-// import {Link, NavLink, useHistory} from 'react-router-dom'
 import DropDown from './DropDown'
 import Faculties from './Faculties'
 import {useState} from 'react'
 import Calender from './Calender'
 import Curriculum from './Curriculum'
 import {Link as Scroll} from 'react-scroll';
-import {Navigate} from "react-router-dom"
+import {Navigate, NavLink} from "react-router-dom"
 import Rdcell from './Rdcell'
 import {useNavigate} from 'react-router-dom'
-// import { ChevronDown } from '@dcp-ui/icons.chevron-down'
 import {
     Menu,
     MenuButton,
@@ -23,98 +21,18 @@ import {
 } from '@chakra-ui/react'
 import GoogleSignInButton from './LoginButton'
 import {isAuthenticated, signout} from '../auth/helper'
-// import LoginButton from './LoginButton'
 const Navbar = () => {
-   
-    // const [state,setState]=useState(false);
-    // const navigate=useNavigate();
-    // const showDropDown=()=>{
-    // setState(true);
-    // }
-    // const hideDropDown=()=>{
-    // setState(false);
+
     var {
         user,
         token
     } = isAuthenticated();
     console.log(user);
     var isOpen = useState(true);
-    // useEffect(() => {
-    //     const script = document.createElement('script');
-    //     script.src = 'https://apis.google.com/js/api:client.js';
-    //     script.onload = init;
-    //     document.body.appendChild(script);
-    // }, []);
+    const [click, setClick] = useState(false);
 
-    // const init = () => {
-    //     window.gapi.load('auth2', () => {
-    //       window.gapi.auth2.init({
-    //         client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
-    //         scope: 'email profile',
-    //         Navigate_uri: 'http://localhost:3000/Faulties'
-
-    //         // Other configuration options
-    //       });
-    //     });
-    // };
-
-    // const signInWithGoogle = () => {
-    //     window.gapi.auth2.getAuthInstance().signIn().then(() => {
-    //       const user = window.gapi.auth2.getAuthInstance().currentUser.get();
-    //       const token = user.getAuthResponse().id_token;
-    //       console.log("fcgsdvHCbkjnk;mcfdf ")
-
-    //       fetch('http://localhost:3001/auth/google', {
-    //         method: 'GET',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ token })
-    //       })
-    //       .then(response => {
-    //         // Handle the response from the server
-    //       })
-    //       .catch(error => {
-    //         console.log(error.message);
-    //       });
-    //     }, error => {
-    //       console.log(error.error);
-    //     });
-    // };
-
-    // useEffect(() => {
-    //     window.gapi.load('auth2', () => {
-    //       window.gapi.auth2.init({
-    //         // your Google OAuth configuration
-    //         client_id: '843567927500-a0pa98jkklh4msck5b3ubvvu0u6b4qj4.apps.googleusercontent.com',
-    //         // Navigate_uri: 'http://localhost:3000',
-
-    //       }).then(() => {
-    //         // Get the user's Google ID token
-    //         console.log(`token>>>>`)
-
-    //         const user = window.gapi.auth2.getAuthInstance().currentUser.get();
-    //         const token = user.getAuthResponse().id_token;
-    //         console.log(`token>>>> ${token}`)
-
-    //         // Make an API request to your server
-    //         fetch('http://localhost:3001/auth/google', {
-    //           method: 'POST',
-    //           headers: {
-    //             'Content-Type': 'application/json'
-    //           },
-    //           body: JSON.stringify({ token })
-    //         })
-    //         .then(response => {
-    //           // Handle the response from your server
-    //           console.log(response)
-    //         })
-    //         .catch(error => {
-    //           // Handle any errors that occur
-    //         });
-    //       });
-    //     });
-    // }, []);
+    const handleClick = () => setClick(!click);
+    const Close = () => setClick(false);
 
 
     const navigate = useNavigate();
@@ -125,9 +43,9 @@ const Navbar = () => {
         <div style={
             {marginBottom: "10px"}
         }>
-            <nav className='dropdown'
+            <nav className='navbar'
                 style={
-                    {height: '20vh'}
+                    {height: '25vh'}
             }>
                 <Stack spacing={1}
                     direction='row'
@@ -146,7 +64,7 @@ const Navbar = () => {
                             {
                                 width: "50%",
                                 display: 'flex',
-                                justifyContent: 'center',
+                                justifyContent: 'start',
                                 alignItems: 'center'
                             }
                         }>
@@ -157,45 +75,46 @@ const Navbar = () => {
                                     }
                             }>
 
-                                <img src="iiit.png" className='iiitim'></img>
+                                <img src="IIIT_Bhubaneswar_Logo-removebg-preview.png" className='iiitim'></img>
                             </div>
                         </div>
-                        <div style={
-                            {
-                                width: "50%",
-                                height: "100%",
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }
+                        <ul className={
+                            click ? "nav-menu active" : "nav-menu"
                         }>
-                            <button className='facbutton1'
-                                onClick={
-                                    () => {
-                                        navigate('/Faculties')
-                                    }
-                            }>
-                                ETC Faculties
-                            </button>
-                            <button className='facbutton1'
-                                onClick={
-                                    () => {
-                                        navigate('/alumii')
-                                    }
-                            }>
-                                Alumni
-                            </button>
-                            {
-                            isAuthenticated() && <button className='facbutton1'
-                                onClick={
-                                    () => {
-                                        navigate('/Student')
-                                    }
-                            }>
-                                Students
-                            </button>
-                        } </div>
+                            <li className="nav-item">
+                                <NavLink exact to="/Faculties" activeClassName="active" className="nav-links f"
 
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Faculties
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink exact to="/alumii" activeClassName="active" className="nav-links f"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Alumni
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink exact to="/Student" activeClassName="active" className="nav-links f"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Student
+                                </NavLink>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                    <div className="nav-icon"
+                        onClick={handleClick}>
+                        <i className={
+                            click ? "fa fa-times" : "fa fa-bars"
+                        }></i>
                     </div>
 
 
@@ -203,13 +122,13 @@ const Navbar = () => {
                         {
                             width: "40%",
                             height: "100%",
-                            // backgroundColor: 'red',
+
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'end ',
                             alignItems: 'flex-end',
                             paddingTop: "20px",
-                            paddingRight: '20px'
+                             paddingRight: '20px'
 
                         }
                     }>
@@ -221,28 +140,14 @@ const Navbar = () => {
                                 fontSize: '1rem',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'end'
+                                justifyContent: 'end',
+                                marginBottom:'10px'
 
 
                             }
                         }>
 
-
-                            <div style={
-                                {
-                                    // display: 'flex',
-                                    // justifyContent: 'center',
-                                    // alignItems: 'center'
-                                    width: "80%",
-                                height: "90%",
-                                fontSize: '1rem',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                // position:'fixed'
-                                }
-                            }>
-                                {
+                            <div> {
                                 isAuthenticated() && user.role === 1 && <button className='centered-placeholder'
                                     onClick={
                                         () => {
@@ -251,94 +156,87 @@ const Navbar = () => {
                                 }>
                                     Update Profile
                                 </button>
-                            }
-                                
-                            {!isAuthenticated()?<GoogleSignInButton/>:<button style={{backgroundColor:"red",borderR
-                            :"10px",padding:"10px",color:"white"}} onClick={signout}>LogOut</button>} 
-                             </div>
+                            } </div>
+                            <div> {
+                                !isAuthenticated() ? <GoogleSignInButton/>: <button style={
+                                        {
+                                            backgroundColor: "red",
+                                            borderRadius: "10px",
+                                            padding: "10px",
+                                            color: "white",
+                                            fontSize:"1.2rem"
+                                        }
+                                    }
+                                    onClick={signout}>Log out</button>
+                            } </div>
 
-                    </div>
-                    <div style={
-                        { // backgroundColor: 'yellow',
-                            width: '80%',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            marginTop: '10px'
-
-                        }
-                    }>
-                        <button className='facbutton'
-                            onClick={
-                                () => {
-                                    navigate('/resources')
-                                }
+                        </div>
+                        <ul className={
+                            click ? "nav-menu active" : "nav-menu"
                         }>
-                            Resources
-                        </button>
-                        <button className='facbutton'
-                            onClick={
-                                () => {
-                                    navigate('/Forum')
-                                }
-                        }>
-                            Forum
-                        </button>
+                            <li className="nav-item">
+                                <NavLink exact to="/resources" activeClassName="active" className="nav-links r"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Resources
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink exact to="/Forum" activeClassName="active" className="nav-links r"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Forum
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink exact to="/contactUs" activeClassName="active" className="nav-links r"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Contact Us
+                                </NavLink>
+                            </li>
 
-                        <Scroll to="newsevents"
-                            style={
-                                {
-                                    fontSize: "1.5rem",
-                                    height: "30%"
-                                }
-                            }
-                            className='facbutton'
-                            smooth={true}>
-                            <h1>
-                                News/Events
-                            </h1>
-                        </Scroll>
 
+                            <li className="nav-item x">
+                                <NavLink exact to="/Faculties" activeClassName="active" className="nav-links"
 
-                        <Scroll to="society"
-                            style={
-                                {
-                                    fontSize: "1.5rem",
-                                    height: "30%"
-                                }
-                            }
-                            className='facbutton'
-                            smooth={true}>
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Faculties
+                                </NavLink>
+                            </li>
+                            <li className="nav-item x">
+                                <NavLink exact to="/alumii" activeClassName="active" className="nav-links"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Alumni
+                                </NavLink>
+                            </li>
+                            <li className="nav-item x">
+                                <NavLink exact to="/Student" activeClassName="active" className="nav-links"
+                                    onClick={
+                                        click ? handleClick : null
+                                }>
+                                    Student
+                                </NavLink>
+                            </li>
 
-                            <h1>
-                                Societies
-                            </h1>
-                        </Scroll>
-
-                        <Scroll to="footer"
-                            style={
-                                {
-                                    fontSize: "1.5rem",
-                                    height: "30%"
-                                }
-                            }
-                            className='facbutton'
-                            smooth={true}>
-
-                            <h1>
-                                Footer
-                            </h1>
-                        </Scroll>
+                        </ul>
 
 
                     </div>
-                </div>
 
-            </Stack>
+                </Stack>
 
 
-        </nav>
+            </nav>
 
-    </div>
+        </div>
     )
 }
 

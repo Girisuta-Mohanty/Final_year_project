@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './events.css';
 function Events() {
   return (
     <div class="event-container" id="news-events">

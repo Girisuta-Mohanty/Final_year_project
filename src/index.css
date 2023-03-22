@@ -46,14 +46,7 @@ iframe{
   width:600px;
   
 }
-CardBody{
-  width:40vw;
-  height: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+
 /* .imgslider{
   background-color: yellow;
 
@@ -142,9 +135,12 @@ CardBody{
  
 
 .iiitim{
-  width:300px;
-  height:40px;
+  margin-left:30px;
+  width:10vw;
+  height:80%;
+  background-color:white;
 }
+
 /* hero section   */
 .text-on-image{
   position: absolute;
