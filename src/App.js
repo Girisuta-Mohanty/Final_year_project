@@ -22,6 +22,7 @@ import Footers from './components/Footers';
 import UploadFile from './components/Upload';
 import Alumii from './components/Alumii';
 import Forum from './components/Forum';
+import Contact from './components/Contact';
 function App() {
   return (
     <ChakraProvider>
@@ -45,6 +46,7 @@ function App() {
       <Route path='footer' element={<Footers/>}/>
       <Route path='alumii' element={<Alumii/>}/>
       <Route path='Forum' element={<Forum/>}/>
+      <Route path='/contact' element={<Contact/>}/>
       </Routes>
     </div>
     </ChakraProvider>

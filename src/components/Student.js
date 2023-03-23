@@ -59,10 +59,11 @@ const Student = () => {
     setSkill(skill);
     setProjects(projects);
     setExperience(experience);
-    const response1 = await axios.get(`http://localhost:3001/user/${email}/projects`);
+    // console.log(localStorage.getItem('jwt'))
+    const response1 = await axios.get(`http://localhost:3001/student/${email}/projects`);
     setData2(response1.data);
     console.log("projects--" + data2);
-    const response2 = await axios.get(`http://localhost:3001/user/${email}/experience`);
+    const response2 = await axios.get(`http://localhost:3001/student/${email}/experience`);
     setData3(response2.data);
     console.log("projects----" + data3);
 
@@ -150,13 +151,18 @@ const Student = () => {
   return (
 
     <Base>
+    <div>
+    <header style={{ marginTop:"80px",marginRight:"10px"}}>
+        <h1>Find Students by college Id or Name</h1>
+    </header>
+    </div>
       <div>
-        <input type="text" placeholder='Search By Id' className="centered-placeholder" value={filterText}
-          onChange={(e) => setFilterText(e.target.value)} />
-        <button type="submit" style={{ marginRight: "200px" }} className="signin1" onClick={handleFilterSubmit}>Search </button>
+        <input type="text" placeholder='College Id' className="centered-placeholder" value={filterText}
+          onChange={(e) => setFilterText(e.target.value)} style={{ marginTop:"80px",marginRight:"10px"}} />
+        <button type="submit" style={{marginTop:"80px",marginRight:"10px" }} className="signin1" onClick={handleFilterSubmit} >Search </button>
 
-        <input type="text" placeholder='Search By Name' className="centered-placeholder" value={filterText1} onChange={(e) => setFilterTexts(e.target.value)} />
-        <button type="submit" style={{ marginRight: "200px" }} className="signin1" onClick={handleFilterSubmit2} >Search</button>
+        <input type="text" placeholder='Name' className="centered-placeholder" value={filterText1} style={{ marginTop:"80px",marginRight:"10px"}}onChange={(e) => setFilterTexts(e.target.value)} />
+        <button type="submit" style={{ marginTop:"80px",marginRight:"10px" }} className="signin1" onClick={handleFilterSubmit2} >Search</button>
 
         {/* <input type="text" placeholder='Search By Skill' className="centered-placeholder" value={filterText2} onChange={(e) => setFilterTextss(e.target.value)} />
       <button type="submit" className="signin1" style={{ marginRight: "50px" }} onClick={handleFilterSubmit3}>Search</button>

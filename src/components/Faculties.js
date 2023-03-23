@@ -38,7 +38,7 @@ class Card extends React.Component {
         <div className="card">
           
           <div className="card-body">
-          <img src={this.props.img} onClick={()=> window.location.href = this.props.url} />
+          <img src={this.props.img} style={{height:"40%"}}onClick={()=> window.location.href = this.props.url} />
             <h2>{this.props.title}</h2>
             <p>{this.props.description}</p>
             <div><p>Email:</p> <h5>{this.props.email}</h5></div>

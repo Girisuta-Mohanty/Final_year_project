@@ -136,8 +136,8 @@ const fetchData=
   return (
     <Base>
     <ButtonGroup size='sm' isAttached variant='outline'>
-  <Button colorScheme='pink' variant='solid' size='lg' style={{}} >Add an Alumni</Button>
-  <IconButton aria-label='Add to friends' icon={<AddIcon />} onClick={toggleForm} size='lg'/>
+  <Button colorScheme='pink' variant='solid' size='lg'onClick={toggleForm} style={{ marginTop:"80px",marginRight:"10px"}} >Add an Alumni</Button>
+  {/* <IconButton aria-label='Add to friends' icon={<AddIcon />} onClick={toggleForm} size='lg' style={{ marginTop:"80px"}}/> */}
 </ButtonGroup>
      {/* <button onClick={toggleForm}>+ Add an Alumni</button> */}
      {

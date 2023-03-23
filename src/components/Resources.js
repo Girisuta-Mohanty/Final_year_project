@@ -24,7 +24,7 @@ const Resources = () => {
     return (
         <Base>
             <div style={{width:"90vw" }}>
-                <h1 style={{fontSize:"2rem" ,fontWeight:'400'}}>SUBJECTS</h1>
+                <h1 style={{fontSize:"2rem" ,fontWeight:'400',marginTop:'80px',marginRight:"10px"}}>SUBJECTS</h1>
                 <div className='classroom_container'>    {
                     data.map((item) => <ClassroomBox title={
                             item.name

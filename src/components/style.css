@@ -116,19 +116,27 @@ body {
 .signin1 {
     width: 90px;
     height: 40px;
-    margin-left: 20px;
-    background-color: rgb(232, 50, 14);
+    margin-left: 10px;
+    background-color: #EE4E34;
     border-radius: 6px;
     color: #fff;
     padding: 1px 10px;
     font-size: 1.3rem;
 
 }
+header h1 {
+  font-size: 30px;
+  font-weight: 600;
+  background-image: linear-gradient(to right ,#553c9a, #ee4b2b, #00c2cb, #ff7f50, #553c9a);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
 .signin2 {
     width: 90px;
     height: 40px;
     margin: 20px 0;
-    background-color: rgb(246, 105, 89);
+    background-color: #ba8848;
     border-radius: 6px;
     color: #fff;
     padding: 1px 10px;
@@ -423,6 +431,7 @@ h5 {
     display: grid;
     grid-template-columns: repeat(3, minmax(300px, 500px));
     grid-gap: 50px;
+    margin:80px 10px;
     justify-content: space-between;
 }
 .main-newscard--cointainer {

@@ -158,6 +158,7 @@ const Navbar = () => {
                                 </button>
                             } </div>
                             <div> {
+                                
                                 !isAuthenticated() ? <GoogleSignInButton/>: <button style={
                                         {
                                             backgroundColor: "red",

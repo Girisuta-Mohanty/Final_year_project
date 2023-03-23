@@ -3,6 +3,7 @@
     console.log(`authenticate ${data}`)
     if (typeof window !== 'undefined') {
       localStorage.setItem('jwt', JSON.stringify(data));
+      // console.log(localStorage.jwt)
       next();
     }
   };

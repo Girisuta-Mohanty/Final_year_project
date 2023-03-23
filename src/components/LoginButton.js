@@ -34,7 +34,7 @@ const GoogleSignInButton = () => {
                                 const response = await axios.post('http://localhost:3001/auth/google', {token: credentialResponse.credential});
     
                                 authenticate(( response.data),()=>{
-                                    // console.log(`sd ${response.data.user.email}`)
+                                    //  console.log(`sd ${token}`)
                                     console.log("yes i have set the key value pair")
                                     window.location.reload();
                                 })
