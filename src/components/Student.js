@@ -47,6 +47,7 @@ const Student = () => {
   const [collgeId, setCollegid] = useState('');
   const [data2, setData2] = useState(null);
   const [data3, setData3] = useState(null);
+
   const handleClick = async (email1) => {
     console.log(`http://localhost:3001/user/${email1}`);
     const response = await axios.get(`http://localhost:3001/user/${email1}`);
@@ -61,7 +62,7 @@ const Student = () => {
     setExperience(experience);
     const response1 = await axios.get(`http://localhost:3001/user/${email}/projects`);
     setData2(response1.data);
-    console.log("projects--" + data2);
+    console.log("projects-- hiiiiiiiiiiiiiii" + data2);
     const response2 = await axios.get(`http://localhost:3001/user/${email}/experience`);
     setData3(response2.data);
     console.log("projects----" + data3);
@@ -201,6 +202,7 @@ const Student = () => {
         </table>
       </div>
       {showDetails && (
+      
         <div className="modal-overlay">
           <div className='modal-container'>
             <span className="modal-close" onClick={handleClose}>

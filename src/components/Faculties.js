@@ -5,7 +5,7 @@ const Faculties = () => {
   return (
     <Base>
     <div style={{textAlign:"center" }}>
-       <section className='main-card--cointainer'>
+       <div className='main-cardd'>
       {
         Faculty.map((curElem)=>{
             const {id,image,name,profession,email,description,url}=curElem;
@@ -19,7 +19,7 @@ const Faculties = () => {
             );
         })
       }
-      </section>
+      </div>
       
     </div>
     </Base>
@@ -40,9 +40,9 @@ class Card extends React.Component {
           <div className="card-body">
           <img src={this.props.img} onClick={()=> window.location.href = this.props.url} />
             <h2>{this.props.title}</h2>
-            <p>{this.props.description}</p>
-            <div><p>Email:</p> <h5>{this.props.email}</h5></div>
-            <div> <p>Phone-No:</p> <h5>{this.props.number}</h5></div>
+            <div>{this.props.description}</div>
+            <div><p>Email:  {this.props.email}</p></div>
+            <div> <p>Phone-No: {this.props.number}</p></div>
            {/* <a href={this.props.url}>{this.props.url}</a> */}
           </div>
         </div>
